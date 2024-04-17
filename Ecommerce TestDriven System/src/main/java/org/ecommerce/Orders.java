@@ -1,8 +1,10 @@
-public class Order {
+package org.ecommerce;
+
+public class Orders {
     private String orderId;
     private String userEmail;
 
-    public Order(String orderId, String userEmail) {
+    public Orders(String orderId, String userEmail) {
         this.orderId = orderId;
         this.userEmail = userEmail;
     }

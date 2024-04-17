@@ -16,7 +16,7 @@ class ProductTest {
 
     @Test
     @Order(1)
-    void getId() {
+     void getId() {
         assertEquals("1", product.getId());
     }
 

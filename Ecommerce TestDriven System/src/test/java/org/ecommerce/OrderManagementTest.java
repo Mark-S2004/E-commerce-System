@@ -17,19 +17,19 @@ public class OrderManagementTest {
 
     @Test
     public void testPlaceOrder() {
-        Order order = new Order("O001", "john@example.com");
+        Orders order = new Orders("O001", "john@example.com");
         orderManagement.placeOrder(order);
-        List<Order> orders = orderManagement.getAllOrders();
+        List<Orders> orders = orderManagement.getAllOrders();
         assertEquals(1, orders.size());
         assertTrue(orders.contains(order));
     }
 
     @Test
     public void testCancelOrder() {
-        Order order = new Order("O001", "john@example.com");
+        Orders order = new Orders("O001", "john@example.com");
         orderManagement.placeOrder(order);
         orderManagement.cancelOrder(order);
-        List<Order> orders = orderManagement.getAllOrders();
+        List<Orders> orders = orderManagement.getAllOrders();
         assertEquals(0, orders.size());
         assertFalse(orders.contains(order));
     }

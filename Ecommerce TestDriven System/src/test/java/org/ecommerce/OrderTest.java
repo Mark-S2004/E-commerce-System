@@ -12,7 +12,7 @@ public class OrderTest {
         String orderId = "123";
         String userEmail = "test@example.com";
 
-        Order order = new Order(orderId, userEmail);
+        Orders order = new Orders(orderId, userEmail);
 
         assertEquals(orderId, order.getOrderId());
         assertEquals(userEmail, order.getUserEmail());
@@ -23,7 +23,7 @@ public class OrderTest {
         String orderId = "123";
         String userEmail = "test@example.com";
 
-        Order order = new Order(orderId, userEmail);
+        Orders order = new Orders(orderId, userEmail);
 
         assertEquals(orderId, order.getOrderId());
     }
@@ -34,7 +34,7 @@ public class OrderTest {
         String newOrderId = "456";
         String userEmail = "test@example.com";
 
-        Order order = new Order(orderId, userEmail);
+        Orders order = new Orders(orderId, userEmail);
 
         order.setOrderId(newOrderId);
 
@@ -46,7 +46,7 @@ public class OrderTest {
         String orderId = "123";
         String userEmail = "test@example.com";
 
-        Order order = new Order(orderId, userEmail);
+        Orders order = new Orders(orderId, userEmail);
 
         assertEquals(userEmail, order.getUserEmail());
     }
@@ -57,7 +57,7 @@ public class OrderTest {
         String userEmail = "test@example.com";
         String newUserEmail = "newtest@example.com";
 
-        Order order = new Order(orderId, userEmail);
+        Orders order = new Orders(orderId, userEmail);
 
         order.setUserEmail(newUserEmail);
 
