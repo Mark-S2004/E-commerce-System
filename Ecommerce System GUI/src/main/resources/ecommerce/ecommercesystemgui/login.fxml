@@ -18,6 +18,6 @@
             <Font name="Arial Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="274.0" layoutY="317.0" mnemonicParsing="false" onAction="#goToCreateAccount" text="Login" />
+      <Button fx:id="loginButton" layoutX="274.0" layoutY="342.0" mnemonicParsing="false" onAction="#login" text="login" />
    </children>
 </AnchorPane>

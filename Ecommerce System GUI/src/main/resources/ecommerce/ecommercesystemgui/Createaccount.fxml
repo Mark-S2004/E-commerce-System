@@ -5,14 +5,21 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CreateAccountController">
    <children>
-      <Button fx:id="createAccountButton" layoutX="253.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchToLoginScene" text="CreateAccount" />
       <Label layoutX="151.0" layoutY="170.0" text="Username" />
       <Label layoutX="151.0" layoutY="229.0" text="Password" />
       <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="225.0" />
       <TextField fx:id="usernameField" layoutX="226.0" layoutY="166.0" />
+      <Label layoutX="202.0" layoutY="46.0" text="Create Account">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="277.0" text="user type" />
+      <TextField fx:id="userTypeField" layoutX="226.0" layoutY="273.0" />
+      <Button fx:id="createAccountButton" layoutX="252.0" layoutY="348.0" mnemonicParsing="false" onAction="#createAccount" text="Create account" />
    </children>
 </AnchorPane>

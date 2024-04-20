@@ -15,16 +15,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-public class CreateAccountController {
 
+public class CreateAccountController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private AccountManager a = new AccountManager();
+    //private AccountManager a = new AccountManager();
 
-    public void setA(AccountManager a) {
-        this.a = a;
-    }
+    //public void setA(AccountManager a) {
+    //    this.a = a;
+   // }
 
     @FXML
     private TextField usernameField;
@@ -33,23 +33,46 @@ public class CreateAccountController {
     private TextField passwordField;
 
     @FXML
-    private Button createAccountButton;
-
-    public void init(Stage stage) {
-        this.stage = stage;
-    }
+    private TextField userTypeField;
 
     @FXML
-    void switchToLoginScene(ActionEvent event) throws IOException {
+    private Button createAccountButton;
+
+
+
+    @FXML
+    void createAccount(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        a.createAccount(username,password);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        root = loader.load();
-        LoginController loginController = loader.getController();
-        loginController.setA(a);
+        String userType = userTypeField.getText();
+        AccountManager.createAccount(username, password, userType);
+
+        FXMLLoader loader2;
+        if (userType.equalsIgnoreCase("manager")) {
+            loader2 = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
+        } else if (userType.equalsIgnoreCase("customer")) {
+            loader2 = new FXMLLoader(getClass().getResource("productpage.fxml"));
+
+
+        } else {
+            System.out.println("Invalid user type. Redirecting to default page.");
+            loader2 = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+
+
+
+        }
+
+
+    //    if (userType.equalsIgnoreCase("manager")) {
+     //       ProductCatalogController productCatalogController = loader.getController();
+            // Set necessary properties or methods in the ProductCatalogController
+      //  } else if (userType.equalsIgnoreCase("customer")) {
+          //  ProductsPageController productsPageController = loader.getController();
+            // Set necessary properties or methods in the ProductsPageController
+      //  }
+        Parent root2 = loader2.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(root2);
         stage.setScene(scene);
         stage.show();
     }

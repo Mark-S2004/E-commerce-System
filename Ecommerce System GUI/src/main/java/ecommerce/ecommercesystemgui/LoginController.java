@@ -18,12 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-private AccountManager a;
+
     private Stage stage;
 
-    public void setA(AccountManager a) {
-        this.a = a;
-    }
 
     @FXML
     private TextField usernameField;
@@ -34,28 +31,32 @@ private AccountManager a;
     @FXML
     private Button loginButton;
 
-    public void init(Stage stage) {
-        this.stage = stage;
-    }
 
 
     @FXML
-    private void goToCreateAccount(ActionEvent event) throws Exception {
-
+    private void login(ActionEvent event) throws IOException{
         String username = usernameField.getText();
         String password = passwordField.getText();
+        AccountManager a = new AccountManager();
+        UserAccount u = new UserAccount(a);
+        if (u.login(username, password)) {
+            FXMLLoader loader2;
+            if (u.isManager()) {
+                 loader2 = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
+                //  ProductCatalogController productCatalogController = loader.getController();
+                // Set necessary properties or methods in the ProductCatalogController
+            } else {
+                loader2 = new FXMLLoader(getClass().getResource("productpage.fxml"));
+                // ProductPageController productPageController = loader.getController();
+                // Set necessary properties or methods in the ProductsPageController
+            }
 
-        UserAccount u=new UserAccount(a);
-        if(u.login(username,password)) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Createaccount.fxml"));
-            Parent root = loader.load();
-            CreateAccountController createAccountController = loader.getController();
-            createAccountController.setA(a);
+            Parent root = loader2.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+        } else {
+            System.out.println("Wrong credentials. Please try again.");
         }
-        else { System.out.println("Wrong Credentials");}
-
     }
 }

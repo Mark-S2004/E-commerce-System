@@ -5,19 +5,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AccountManager {
-    private List<Account> accounts;
+    private static List<Account> accounts=new ArrayList<>();
 
     public AccountManager() {
-        accounts = new ArrayList<>();
+
     }
 
-    public void createAccount(String username, String password) {
-        Account newAccount = new Account(username, password);
-        accounts.add(newAccount);
+    public static void createAccount(String username, String password, String type) {
+        //Account newAccount;
+        if(type.equalsIgnoreCase("manager")){
+        ManagerAccount newAccount = new ManagerAccount(username, password);
+            accounts.add(newAccount);}
+        else if(type.equalsIgnoreCase("customer")){
+            CustomerAccount newAccount = new CustomerAccount(username, password);
+            accounts.add(newAccount);}
+        else{System.out.println("wronggg");}
         System.out.println("Account created successfully!");
     }
 
-    public void displayAccounts() {
+    public static void displayAccounts() {
         System.out.println("Accounts:");
         for (Account account : accounts) {
             System.out.println("Username: " + account.getUsername() + ", Password: " + account.getPassword());
@@ -31,4 +37,15 @@ public class AccountManager {
         }
         return false;
     }
+
+
+    public boolean isManager(String username) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username) && account instanceof ManagerAccount) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

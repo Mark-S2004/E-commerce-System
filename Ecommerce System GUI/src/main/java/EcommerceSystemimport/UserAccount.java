@@ -1,4 +1,6 @@
 package EcommerceSystemimport;
+
+
 public class UserAccount {
     private String username;
     private String password;
@@ -14,17 +16,25 @@ public class UserAccount {
         if (accountManager.authenticate(username, password)) {
             this.username = username;
             this.password = password;
-            loggedIn = true;
+            this.loggedIn = true;
             return true;
         }
         return false;
     }
 
     public void logout() {
-        loggedIn = false;
+        this.loggedIn = false;
     }
 
     public boolean isLoggedIn() {
         return loggedIn;
     }
+
+    public boolean isManager() {
+        if (isLoggedIn()) {
+            return accountManager.isManager(username);
+        }
+        return false;
+    }
+
 }
