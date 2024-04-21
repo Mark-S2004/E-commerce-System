@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: WHITE;" stylesheets="@../../../../src/main/resources/ecommerce/ecommercesystemgui/Styles/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.catalogController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@../../../../src/main/resources/ecommerce/ecommercesystemgui/Styles/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CartController">
    <children>
-      <BorderPane layoutX="244.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Catalog" textAlignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Catalog" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -37,7 +34,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToCart" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
+                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -53,29 +50,8 @@
             </AnchorPane>
          </top>
          <center>
-            <ListView fx:id="catalogList" prefHeight="311.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="cartList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
-         <bottom>
-            <HBox alignment="CENTER_RIGHT" spacing="32.0" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER" spacing="8.0">
-                     <children>
-                        <Button fx:id="decrementButton" disable="true" mnemonicParsing="false" onAction="#decrement" text="-" />
-                        <Label fx:id="quantityLabel" text="1" />
-                        <Button mnemonicParsing="false" onAction="#increment" text="+" />
-                     </children>
-                  </HBox>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#addToCart" prefHeight="32.0" prefWidth="128.0" style="-fx-background-color: Green;" text="Add to Cart" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-               <BorderPane.margin>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-               </BorderPane.margin>
-            </HBox>
-         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

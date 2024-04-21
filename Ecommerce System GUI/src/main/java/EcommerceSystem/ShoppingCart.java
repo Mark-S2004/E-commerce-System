@@ -1,32 +1,29 @@
 package EcommerceSystem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingCart {
-    private List<Product> items;
+    private final Map<Product, Integer> items = new HashMap<>();
+    private double total;
 
-    public ShoppingCart() {
-        this.items = new ArrayList<>();
+    public ShoppingCart() {}
+
+    public double getTotal() {
+        return total;
     }
 
-    public void addItem(Product item) {
-        items.add(item);
+    public void addItem(Product item, Integer quantity) {
+        total += item.getPrice();
+        items.put(item, quantity);
     }
 
     public void removeItem(Product item) {
+        total -= item.getPrice();
         items.remove(item);
     }
 
-    public List<Product> getItems() {
+    public Map<Product, Integer> getItems() {
         return items;
-    }
-
-    public double calculateTotal() {
-        double total = 0.0;
-        for (Product item : items) {
-            total += item.getPrice();
-        }
-        return total;
     }
 }

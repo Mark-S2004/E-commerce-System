@@ -4,22 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManager {
-    private static List<Account> accounts=new ArrayList<>();
+    private static List<Account> accounts = new ArrayList<>();
+    private static Account loggedInUser;
 
-    public AccountManager() {
+    public AccountManager() {}
 
+    public static Account getLoggedInUser() {
+        return loggedInUser;
     }
 
     public static void createAccount(String username, String password, String type) {
-        //Account newAccount;
-        if(type.equalsIgnoreCase("manager")){
-        ManagerAccount newAccount = new ManagerAccount(username, password);
-            accounts.add(newAccount);}
-        else if(type.equalsIgnoreCase("customer")){
+        if(type.equalsIgnoreCase("manager")) {
+            ManagerAccount newAccount = new ManagerAccount(username, password);
+            loggedInUser = newAccount;
+            accounts.add(newAccount);
+        }
+        else if(type.equalsIgnoreCase("customer")) {
             CustomerAccount newAccount = new CustomerAccount(username, password);
-            accounts.add(newAccount);}
-        else{System.out.println("wronggg");}
-        System.out.println("Account created successfully!");
+            loggedInUser = newAccount;
+            accounts.add(newAccount);
+        }
     }
 
     public static void displayAccounts() {
@@ -28,9 +32,10 @@ public class AccountManager {
             System.out.println("Username: " + account.getUsername() + ", Password: " + account.getPassword());
         }
     }
-    public boolean authenticate(String username, String password) {
+    public static boolean authenticate(String username, String password) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+                loggedInUser = account;
                 return true;
             }
         }
@@ -38,7 +43,7 @@ public class AccountManager {
     }
 
 
-    public boolean isManager(String username) {
+    public static boolean isManager(String username) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username) && account instanceof ManagerAccount) {
                 return true;
