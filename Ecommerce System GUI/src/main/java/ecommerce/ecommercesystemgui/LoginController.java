@@ -35,7 +35,7 @@ public class LoginController {
             if (u.isManager()) {
                  loader = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
             } else {
-                loader = new FXMLLoader(getClass().getResource("productpage.fxml"));
+                loader = new FXMLLoader(getClass().getResource("catalog-view.fxml"));
             }
             root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
