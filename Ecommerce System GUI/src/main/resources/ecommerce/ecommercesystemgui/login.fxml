@@ -5,19 +5,25 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.LoginController">
    <children>
-      <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="256.0" />
-      <TextField fx:id="usernameField" layoutX="226.0" layoutY="188.0" />
-      <Label layoutX="130.0" layoutY="192.0" text="Username" />
-      <Label layoutX="130.0" layoutY="260.0" text="Password" />
       <Label layoutX="131.0" layoutY="76.0" text="Please Enter Credentials">
          <font>
             <Font name="Arial Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="274.0" layoutY="342.0" mnemonicParsing="false" onAction="#login" text="login" />
+      <Label layoutX="175.0" layoutY="184.0" text="Username" />
+      <TextField fx:id="usernameField" layoutX="252.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" />
+      <Label layoutX="175.0" layoutY="225.0" text="Password" />
+      <PasswordField fx:id="passwordField" layoutX="252.0" layoutY="221.0" prefHeight="25.0" prefWidth="173.0" />
+      <VBox layoutX="175.0" layoutY="307.0" spacing="8.0">
+         <children>
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" prefWidth="250.0" text="Login" />
+            <Button mnemonicParsing="false" onAction="#cancel" prefWidth="250.0" text="Cancel" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

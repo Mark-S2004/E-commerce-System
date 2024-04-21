@@ -15,20 +15,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class LoginController {
-
     private Stage stage;
-
-
+    private Scene scene;
+    private Parent root;
     @FXML
-    private TextField usernameField;
-
-    @FXML
-    private TextField passwordField;
-
+    private TextField usernameField, passwordField;
     @FXML
     private Button loginButton;
-
-
 
     @FXML
     private void login(ActionEvent event) throws IOException{
@@ -36,24 +29,29 @@ public class LoginController {
         String password = passwordField.getText();
         AccountManager a = new AccountManager();
         UserAccount u = new UserAccount(a);
-        if (u.login(username, password)) {
-            FXMLLoader loader2;
-            if (u.isManager()) {
-                 loader2 = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
-                //  ProductCatalogController productCatalogController = loader.getController();
-                // Set necessary properties or methods in the ProductCatalogController
-            } else {
-                loader2 = new FXMLLoader(getClass().getResource("productpage.fxml"));
-                // ProductPageController productPageController = loader.getController();
-                // Set necessary properties or methods in the ProductsPageController
-            }
 
-            Parent root = loader2.load();
+        if (u.login(username, password)) {
+            FXMLLoader loader;
+            if (u.isManager()) {
+                 loader = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
+            } else {
+                loader = new FXMLLoader(getClass().getResource("productpage.fxml"));
+            }
+            root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            scene = new Scene(root);
             stage.setScene(scene);
         } else {
             System.out.println("Wrong credentials. Please try again.");
         }
+    }
+
+    @FXML
+    void cancel(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 }

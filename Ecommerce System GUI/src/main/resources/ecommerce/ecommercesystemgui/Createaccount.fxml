@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CreateAccountController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
@@ -28,10 +27,10 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="managerRadio" layoutX="341.0" layoutY="201.0" mnemonicParsing="false" text="Manager" toggleGroup="$userType" />
-            <VBox layoutX="273.0" layoutY="265.0" spacing="8.0">
+            <VBox layoutX="173.0" layoutY="261.0" prefHeight="74.0" prefWidth="250.0" spacing="8.0">
                <children>
-                  <Button fx:id="createAccountButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createAccount" text="Create account" textAlignment="CENTER" />
-                  <Button mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="96.0" text="Cancel" />
+                  <Button fx:id="createAccountButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createAccount" prefHeight="25.0" prefWidth="250.0" text="Create account" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="250.0" text="Cancel" />
                </children>
                <padding>
                   <Insets bottom="8.0" top="8.0" />
