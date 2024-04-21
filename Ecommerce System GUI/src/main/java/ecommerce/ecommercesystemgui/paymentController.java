@@ -1,5 +1,5 @@
 package ecommerce.ecommercesystemgui;
-import EcommerceSystemimport.PaymentProcessor;
+import EcommerceSystem.PaymentProcessor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

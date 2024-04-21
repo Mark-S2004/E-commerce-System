@@ -1,4 +1,4 @@
-package EcommerceSystemimport;
+package EcommerceSystem;
 
 class Account {
     private String username;

@@ -1,6 +1,6 @@
 package ecommerce.ecommercesystemgui;
 
-import EcommerceSystemimport.*;
+import EcommerceSystem.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 public class ProductPageController {
     private Stage stage;

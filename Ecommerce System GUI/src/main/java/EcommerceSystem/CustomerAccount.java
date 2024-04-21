@@ -1,4 +1,4 @@
-package EcommerceSystemimport;
+package EcommerceSystem;
 
 class CustomerAccount extends Account {
     public CustomerAccount(String username, String password) {

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCatalog {
-    private List<Product> products;
+    private static List<Product> products=new ArrayList<>();
 
     public ProductCatalog() {
-        this.products = new ArrayList<>();
+
     }
 
-    public void addProduct(Product product) {
+    public static void addProduct(Product product) {
         products.add(product);
     }
 
@@ -18,7 +18,7 @@ public class ProductCatalog {
         products.remove(product);
     }
 
-    public List<Product> getAllProducts() {
+    public static List<Product> getAllProducts() {
         return products;
     }
 

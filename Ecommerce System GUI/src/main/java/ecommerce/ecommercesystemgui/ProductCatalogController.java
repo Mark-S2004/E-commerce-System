@@ -1,7 +1,6 @@
 package ecommerce.ecommercesystemgui;
 
-import EcommerceSystemimport.*;
-import javafx.collections.ObservableList;
+import EcommerceSystem.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
