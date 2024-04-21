@@ -4,68 +4,59 @@ import EcommerceSystem.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ProductCatalogController {
+public class ProductCatalogController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
-    private ListView<Product> productList;
-
+    private ListView<Product> catalogList;
     @FXML
-    private TextField Idfield;
+    private TextField idField, nameField, priceField;
 
-    @FXML
-    private TextField Namefield;
-
-    @FXML
-    private TextField Pricefield;
-
-    private ProductCatalog pc=new ProductCatalog();
-   // private ProductPageController productPageController;
-
-    // public void initialize(ProductList productlist) {
-   //     this.productlist = productlist;
-   // }
-//public void setProductCatalog(ProductCatalog pc){
-//    this.pc=pc;
-//}
-    @FXML
-    private void addProduct(ActionEvent e) throws IOException {
-
-        String name = Namefield.getText();
-        double price = Double.parseDouble(Pricefield.getText());
-        String id = Idfield.getText();
-        Product product = new Product(id, name, price);
-        pc.addProduct(product);
-        productList.getItems().add(product);
-
-
-        productList.cellFactoryProperty().set(param -> new ListCell<Product>() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        catalogList.getItems().addAll(ProductCatalog.getAllProducts());
+        System.out.println("added all items");
+        catalogList.cellFactoryProperty().set(param -> new ListCell<Product>() {
             @Override
             protected void updateItem(Product product, boolean empty) {
                 super.updateItem(product, empty);
-
-                if (empty || product == null) {
-                    setText(null);
-                } else {
-                    setText(product.getName() + " - $" + product.getPrice());
-                }
+                if (empty || product == null)setText(null);
+                else setText(product.getName() + " - $" + product.getPrice());
             }
+        });
+    }
 
+    @FXML
+    private void addProduct(ActionEvent e) throws IOException {
+        String name = nameField.getText();
+        double price = Double.parseDouble(priceField.getText());
+        String id = idField.getText();
+        Product product = new Product(id, name, price);
+
+        ProductCatalog.addProduct(product);
+        catalogList.getItems().add(product);
+        catalogList.cellFactoryProperty().set(param -> new ListCell<Product>() {
+            @Override
+            protected void updateItem(Product product, boolean empty) {
+                super.updateItem(product, empty);
+                if (empty || product == null) setText(null);
+                else setText(product.getName() + " - $" + product.getPrice());
+            }
         });
 
         System.out.println("Product added successfully");
-
     }
-
-
 
     @FXML
     public void finish(ActionEvent event) throws IOException {
@@ -75,5 +66,4 @@ public class ProductCatalogController {
         stage.setScene(scene);
         stage.show();
     }
-    // Implement other methods as needed
 }

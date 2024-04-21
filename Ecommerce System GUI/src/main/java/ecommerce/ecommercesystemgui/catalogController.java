@@ -22,13 +22,12 @@ public class catalogController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private ProductCatalog productCatalog;
     @FXML
     private ListView<Product> catalogList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        catalogList.getItems().addAll(productCatalog.getAllProducts());
+        catalogList.getItems().addAll(ProductCatalog.getAllProducts());
         System.out.println("added all items");
         catalogList.cellFactoryProperty().set(param -> new ListCell<Product>() {
             @Override
