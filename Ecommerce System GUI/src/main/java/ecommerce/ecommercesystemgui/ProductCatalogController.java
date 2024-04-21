@@ -54,6 +54,9 @@ public class ProductCatalogController implements Initializable {
                 else setText(product.getName() + " - $" + product.getPrice());
             }
         });
+        nameField.clear();
+        idField.clear();
+        priceField.clear();
 
         System.out.println("Product added successfully");
     }
