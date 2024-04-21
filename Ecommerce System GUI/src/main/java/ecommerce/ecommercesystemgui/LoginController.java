@@ -4,6 +4,7 @@ import EcommerceSystem.Account;
 import EcommerceSystem.AccountManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class LoginController {
     @FXML
     private TextField usernameField, passwordField;
     @FXML
-    private Button loginButton;
+    private Label errorLabel;
 
     @FXML
     private void login(ActionEvent event) throws IOException{
@@ -41,7 +42,7 @@ public class LoginController {
             scene = new Scene(root);
             stage.setScene(scene);
         } else {
-            System.out.println("Wrong credentials. Please try again.");
+            errorLabel.setVisible(true);
         }
     }
 

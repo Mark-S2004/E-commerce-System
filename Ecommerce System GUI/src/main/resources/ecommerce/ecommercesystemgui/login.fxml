@@ -15,6 +15,7 @@
             <Font name="Arial Bold" size="29.0" />
          </font>
       </Label>
+      <Label fx:id="errorLabel" layoutX="251.0" layoutY="153.0" text="Invalid Credentials" textFill="RED" visible="false" />
       <Label layoutX="175.0" layoutY="184.0" text="Username" />
       <TextField fx:id="usernameField" layoutX="252.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" />
       <Label layoutX="175.0" layoutY="225.0" text="Password" />
