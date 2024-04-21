@@ -26,4 +26,9 @@ public class ShoppingCart {
     public Map<Product, Integer> getItems() {
         return items;
     }
+
+    public void clear() {
+        items.clear();
+        total = 0;
+    }
 }
