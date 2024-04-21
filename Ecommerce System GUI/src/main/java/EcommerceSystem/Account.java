@@ -1,6 +1,6 @@
 package EcommerceSystem;
 
-class Account {
+public class Account {
     private String username;
     private String password;
 
@@ -15,5 +15,18 @@ class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public boolean login(String username, String password) {
+        if (AccountManager.authenticate(username, password)) {
+            this.username = username;
+            this.password = password;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isManager() {
+        return AccountManager.isManager(username);
     }
 }

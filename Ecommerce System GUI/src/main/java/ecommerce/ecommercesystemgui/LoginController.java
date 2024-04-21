@@ -1,7 +1,7 @@
 package ecommerce.ecommercesystemgui;
 
+import EcommerceSystem.Account;
 import EcommerceSystem.AccountManager;
-import EcommerceSystem.UserAccount;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -27,8 +27,7 @@ public class LoginController {
     private void login(ActionEvent event) throws IOException{
         String username = usernameField.getText();
         String password = passwordField.getText();
-        AccountManager a = new AccountManager();
-        UserAccount u = new UserAccount(a);
+        Account u = new Account(username, password);
 
         if (u.login(username, password)) {
             FXMLLoader loader;
