@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class HelloController {
+public class StartController {
     @FXML
     TextField nameTextField;
 

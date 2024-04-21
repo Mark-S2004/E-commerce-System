@@ -31,9 +31,9 @@ public class LoginController {
         if (u.login(username, password)) {
             FXMLLoader loader;
             if (u.isManager()) {
-                 loader = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
+                 loader = new FXMLLoader(getClass().getResource("addProducts.fxml"));
             } else {
-                loader = new FXMLLoader(getClass().getResource("catalog-view.fxml"));
+                loader = new FXMLLoader(getClass().getResource("catalog.fxml"));
             }
             root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -46,7 +46,7 @@ public class LoginController {
 
     @FXML
     void cancel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
