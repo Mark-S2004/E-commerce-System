@@ -12,15 +12,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class SuccessfulPaymentController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     void switchToCatalog(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("catalog-view.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("catalog-view.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
