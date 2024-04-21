@@ -1,6 +1,5 @@
 package ecommerce.ecommercesystemgui;
 
-import EcommerceSystemimport.AccountManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
