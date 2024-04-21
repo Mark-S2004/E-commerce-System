@@ -14,7 +14,7 @@ public class ShoppingCart {
     }
 
     public void addItem(Product item, Integer quantity) {
-        total += item.getPrice();
+        total += item.getPrice() * quantity;
         items.put(item, quantity);
     }
 
