@@ -80,7 +80,7 @@ public class ProductPageController {
 
     @FXML
     void removeFromCart(ActionEvent e) throws IOException {
-        Product selectedProduct = searchResultsList.getSelectionModel().getSelectedItem();
+        Product selectedProduct = cartItemList.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
             shoppingCart.removeItem(selectedProduct);
             cartItemList.getItems().remove(selectedProduct);
