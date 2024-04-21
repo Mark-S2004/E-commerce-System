@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CreateAccountController">
-   <children>
-      <Label layoutX="151.0" layoutY="170.0" text="Username" />
-      <Label layoutX="151.0" layoutY="229.0" text="Password" />
-      <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="225.0" />
-      <TextField fx:id="usernameField" layoutX="226.0" layoutY="166.0" />
-      <Label layoutX="202.0" layoutY="46.0" text="Create Account">
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CreateAccountController">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="173.0" layoutY="108.0" text="Username" />
+            <TextField fx:id="usernameField" layoutX="248.0" layoutY="104.0" prefHeight="25.0" prefWidth="180.0" />
+            <Label layoutX="173.0" layoutY="153.0" text="Password" />
+            <PasswordField fx:id="passwordField" layoutX="248.0" layoutY="149.0" prefHeight="25.0" prefWidth="180.0" />
+            <Label layoutX="174.0" layoutY="201.0" text="User Type" />
+            <RadioButton fx:id="customerRadio" layoutX="248.0" layoutY="201.0" mnemonicParsing="false" selected="true" text="Customer">
+               <toggleGroup>
+                  <ToggleGroup fx:id="userType" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="managerRadio" layoutX="341.0" layoutY="201.0" mnemonicParsing="false" text="Manager" toggleGroup="$userType" />
+            <VBox layoutX="273.0" layoutY="265.0" spacing="8.0">
+               <children>
+                  <Button fx:id="createAccountButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createAccount" text="Create account" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Cancel" />
+               </children>
+               <padding>
+                  <Insets bottom="8.0" top="8.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label text="Create Account" BorderPane.alignment="CENTER">
          <font>
             <Font size="29.0" />
          </font>
+         <padding>
+            <Insets top="8.0" />
+         </padding>
       </Label>
-      <Label layoutX="152.0" layoutY="277.0" text="user type" />
-      <TextField fx:id="userTypeField" layoutX="226.0" layoutY="273.0" />
-      <Button fx:id="createAccountButton" layoutX="252.0" layoutY="348.0" mnemonicParsing="false" onAction="#createAccount" text="Create account" />
-   </children>
-</AnchorPane>
+   </top>
+</BorderPane>
