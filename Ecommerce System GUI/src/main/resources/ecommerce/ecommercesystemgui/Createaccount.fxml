@@ -31,7 +31,7 @@
             <VBox layoutX="273.0" layoutY="265.0" spacing="8.0">
                <children>
                   <Button fx:id="createAccountButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createAccount" text="Create account" textAlignment="CENTER" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="96.0" text="Cancel" />
                </children>
                <padding>
                   <Insets bottom="8.0" top="8.0" />
