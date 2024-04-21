@@ -78,8 +78,39 @@ public class ProductPageController {
         });
     }
 
+    @FXML
+    void removeFromCart(ActionEvent e) throws IOException {
+        Product selectedProduct = searchResultsList.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            shoppingCart.removeItem(selectedProduct);
+            cartItemList.getItems().remove(selectedProduct);
+            updateTotal();
+        }
+        cartItemList.cellFactoryProperty().set(param -> new ListCell<Product>() {
+            @Override
+            protected void updateItem(Product product, boolean empty) {
+                super.updateItem(product, empty);
+
+                if (empty || product == null) {
+                    setText(null);
+                } else {
+                    setText(product.getName() + " - $" + product.getPrice());
+                }
+            }
+        });
+    }
+
     private void updateTotal() {
         double total = shoppingCart.calculateTotal();
         totalField.setText("$" + String.format("%.2f", total));
+    }
+
+    @FXML
+    public void movetopayment(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("payment.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
