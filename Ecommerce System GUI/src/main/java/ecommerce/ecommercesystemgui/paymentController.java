@@ -27,7 +27,8 @@ public class paymentController implements Initializable {
     private TextField balanceField;
     @FXML
     private Label totalLabel;
-
+    @FXML
+    private Label errorLabel;
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         shoppingCart = ((CustomerAccount) AccountManager.getLoggedInUser()).shoppingCart;
@@ -39,15 +40,18 @@ public class paymentController implements Initializable {
         String enteredAmount=balanceField.getText();
         PaymentProcessor p=new PaymentProcessor();
         p.connectPaymentGateway();
-       if (p.processPayment(Double.parseDouble(enteredAmount))){
-           shoppingCart.clear();
+       //if (p.processPayment(Double.parseDouble(enteredAmount))){
+        //   shoppingCart.clear();
+        if(p.processPayment(Double.parseDouble(enteredAmount))&&Double.parseDouble(enteredAmount)>=Double.parseDouble(totalLabel.getText())){
+               shoppingCart.clear();
            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lastwindow.fxml")));
            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
            scene = new Scene(root);
            stage.setScene(scene);
            stage.show();
        }
-       else {System.out.println("error during payment");}
+       else {//System.out.println("error during payment");
+                 errorLabel.setVisible(true); }
     }
 
     @FXML
