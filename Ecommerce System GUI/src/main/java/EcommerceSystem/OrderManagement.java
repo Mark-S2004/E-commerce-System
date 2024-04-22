@@ -1,4 +1,4 @@
-package EcommerceSystemimport;
+package EcommerceSystem;
 
 import java.util.ArrayList;
 import java.util.List;

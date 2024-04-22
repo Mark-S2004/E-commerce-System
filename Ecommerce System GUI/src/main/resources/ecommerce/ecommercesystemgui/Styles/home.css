@@ -1,0 +1,9 @@
+.menuItem:hover {
+    -fx-border-color: Purple;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+#selectedMenuItem {
+    -fx-border-color: Purple;
+    -fx-border-width: 0px 0px 3px 0px;
+}

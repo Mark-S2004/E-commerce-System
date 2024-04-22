@@ -1,4 +1,4 @@
-package EcommerceSystemimport;
+package EcommerceSystem;
 
 public class Product {
     private String id;

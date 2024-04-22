@@ -1,62 +1,55 @@
 package ecommerce.ecommercesystemgui;
 
-import EcommerceSystemimport.AccountManager;
-import EcommerceSystemimport.UserAccount;
+import EcommerceSystem.Account;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController {
-
     private Stage stage;
-
-
+    private Scene scene;
+    private Parent root;
     @FXML
-    private TextField usernameField;
-
+    private TextField usernameField, passwordField;
     @FXML
-    private TextField passwordField;
-
-    @FXML
-    private Button loginButton;
-
-
+    private Label errorLabel;
 
     @FXML
     private void login(ActionEvent event) throws IOException{
         String username = usernameField.getText();
         String password = passwordField.getText();
-        AccountManager a = new AccountManager();
-        UserAccount u = new UserAccount(a);
-        if (u.login(username, password)) {
-            FXMLLoader loader2;
-            if (u.isManager()) {
-                 loader2 = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
-                //  ProductCatalogController productCatalogController = loader.getController();
-                // Set necessary properties or methods in the ProductCatalogController
-            } else {
-                loader2 = new FXMLLoader(getClass().getResource("productpage.fxml"));
-                // ProductPageController productPageController = loader.getController();
-                // Set necessary properties or methods in the ProductsPageController
-            }
+        Account u = new Account(username, password);
 
-            Parent root = loader2.load();
+        if (u.login(username, password)) {
+            FXMLLoader loader;
+            if (u.isManager()) {
+                 loader = new FXMLLoader(getClass().getResource("addProducts.fxml"));
+            } else {
+                loader = new FXMLLoader(getClass().getResource("catalog.fxml"));
+            }
+            root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            scene = new Scene(root);
             stage.setScene(scene);
         } else {
-            System.out.println("Wrong credentials. Please try again.");
+            errorLabel.setVisible(true);
         }
+    }
+
+    @FXML
+    void cancel(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 }

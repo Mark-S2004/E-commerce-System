@@ -1,79 +1,58 @@
 package ecommerce.ecommercesystemgui;
 
-import EcommerceSystemimport.AccountManager;
+import EcommerceSystem.AccountManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class CreateAccountController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    //private AccountManager a = new AccountManager();
-
-    //public void setA(AccountManager a) {
-    //    this.a = a;
-   // }
-
     @FXML
-    private TextField usernameField;
-
+    private TextField usernameField, passwordField;
     @FXML
-    private TextField passwordField;
-
-    @FXML
-    private TextField userTypeField;
-
-    @FXML
-    private Button createAccountButton;
-
-
+    private RadioButton customerRadio, managerRadio;
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String userType = userTypeField.getText();
+        String userType;
+
+        if (customerRadio.isSelected()) userType = "customer";
+        else userType = "manager";
         AccountManager.createAccount(username, password, userType);
 
-        FXMLLoader loader2;
+        FXMLLoader loader;
         if (userType.equalsIgnoreCase("manager")) {
-            loader2 = new FXMLLoader(getClass().getResource("productcatalog.fxml"));
-        } else if (userType.equalsIgnoreCase("customer")) {
-            loader2 = new FXMLLoader(getClass().getResource("productpage.fxml"));
-
-
+            loader = new FXMLLoader(getClass().getResource("addProducts.fxml"));
         } else {
-            System.out.println("Invalid user type. Redirecting to default page.");
-            loader2 = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-
-
-
+            loader = new FXMLLoader(getClass().getResource("catalog.fxml"));
         }
-
-
-    //    if (userType.equalsIgnoreCase("manager")) {
-     //       ProductCatalogController productCatalogController = loader.getController();
-            // Set necessary properties or methods in the ProductCatalogController
-      //  } else if (userType.equalsIgnoreCase("customer")) {
-          //  ProductsPageController productsPageController = loader.getController();
-            // Set necessary properties or methods in the ProductsPageController
-      //  }
-        Parent root2 = loader2.load();
+        root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root2);
+        scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+    }
+
+    @FXML
+    void cancel(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 }
