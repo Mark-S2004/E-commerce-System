@@ -6,15 +6,13 @@ import java.util.List;
 public class ProductCatalog {
     private static List<Product> products=new ArrayList<>();
 
-    public ProductCatalog() {
-
-    }
+    public ProductCatalog() {}
 
     public static void addProduct(Product product) {
         products.add(product);
     }
 
-    public void removeProduct(Product product) {
+    public static void removeProduct(Product product) {
         products.remove(product);
     }
 
