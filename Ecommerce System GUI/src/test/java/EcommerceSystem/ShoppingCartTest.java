@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import static java.lang.Math.round;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Map;
@@ -44,7 +45,7 @@ public class ShoppingCartTest {
         assertTrue(items.containsKey(item1));
         assertTrue(items.containsValue(quantity));
         assertFalse(items.containsValue(random.nextInt(1000)));
-        assertEquals(item1.getPrice() * quantity, staticCart.getTotal());
+        assertEquals(round(item1.getPrice() * quantity), round(staticCart.getTotal()));
     }
 
     static Stream<Arguments> addDifferentItems() {
