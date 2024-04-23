@@ -14,8 +14,10 @@ public class ShoppingCart {
     }
 
     public void addItem(Product item, Integer quantity) {
-        total += item.getPrice() * quantity;
-        items.put(item, quantity);
+        if (!items.containsKey(item)) {
+            total += item.getPrice() * quantity;
+            items.put(item, quantity);
+        }
     }
 
     public void removeItem(Product item) {
