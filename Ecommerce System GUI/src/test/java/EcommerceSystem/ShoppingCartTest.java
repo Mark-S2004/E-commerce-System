@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ShoppingCartTest {
     private ShoppingCart shoppingCart;
+    private static final ShoppingCart staticCart = new ShoppingCart();
     private static Product item1, item2;
 
     @BeforeEach
@@ -35,14 +36,14 @@ public class ShoppingCartTest {
     @RepeatedTest(3)
     @Order(2)
     public void addSameItem() {
-        shoppingCart.addItem(item1, 5);
-        Map<Product, Integer> items = shoppingCart.getItems();
+        staticCart.addItem(item1, 5);
+        Map<Product, Integer> items = staticCart.getItems();
 
         assertEquals(1, items.size());
         assertTrue(items.containsKey(item1));
         assertTrue(items.containsValue(5));
         assertFalse(items.containsValue(new Random().nextInt(1000) + 6));
-        assertEquals(item1.getPrice() * 5, shoppingCart.getTotal());
+        assertEquals(item1.getPrice() * 5, staticCart.getTotal());
     }
 
     static Stream<Arguments> addDifferentItems() {
