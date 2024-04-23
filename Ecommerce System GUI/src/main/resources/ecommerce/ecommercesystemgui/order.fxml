@@ -2,12 +2,56 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.orderManagementController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" stylesheets="@../../../../src/main/resources/ecommerce/ecommercesystemgui/Styles/home.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.orderManagementController">
    <children>
-      <Button layoutX="59.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchToCatalog" text="catalog" />
-      <Button layoutX="500.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchToHome" text="home" />
-      <Pagination fx:id="p" layoutX="24.0" layoutY="17.0" prefHeight="308.0" prefWidth="555.0" />
+      <BorderPane layoutX="254.0" layoutY="110.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToCatalog" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Catalog" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../src/main/resources/ecommerce/ecommercesystemgui/images/menu_book_FILL0_wght400_GRAD0_opsz48.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Orders" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../src/main/resources/ecommerce/ecommercesystemgui/images/orders_FILL0_wght400_GRAD0_opsz48.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToCart" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../src/main/resources/ecommerce/ecommercesystemgui/images/shopping_cart_FILL0_wght400_GRAD0_opsz48.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Sign Out" textAlignment="CENTER" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <Pagination fx:id="p" prefHeight="308.0" prefWidth="555.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

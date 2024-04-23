@@ -36,8 +36,6 @@ public class paymentController implements Initializable {
 
     @FXML
     void pay(ActionEvent event) throws IOException, CloneNotSupportedException {
-        ShoppingCart shoppingCart2;
-        shoppingCart2 = (ShoppingCart) shoppingCart.clone();
         String enteredAmount = balanceField.getText();
         PaymentProcessor p = new PaymentProcessor();
         p.connectPaymentGateway();
@@ -45,7 +43,9 @@ public class paymentController implements Initializable {
         //   shoppingCart.clear();
         if (p.processPayment(Double.parseDouble(enteredAmount)) && Double.parseDouble(enteredAmount) >= Double.parseDouble(totalLabel.getText())) {
             orderManagement = ((CustomerAccount) AccountManager.getLoggedInUser()).orderManagement;
-            orderManagement.placeOrder(new Order(shoppingCart2));
+            Order order=new Order();
+            order.setItems(shoppingCart.getItems());
+            orderManagement.placeOrder(order);
             shoppingCart.clear();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lastwindow.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -68,7 +68,7 @@ public class paymentController implements Initializable {
 
     @FXML
     void switchToOrders(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("orders.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("order.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

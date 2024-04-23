@@ -23,6 +23,7 @@ public class orderManagementController implements Initializable {
     private Scene scene;
     private Parent root;
     OrderManagement orderManagement;
+    ShoppingCart shoppingCart;
 
    /* @FXML
     private ListView<Map.Entry<Product, Integer>> cartList;*/
@@ -37,6 +38,7 @@ public class orderManagementController implements Initializable {
         Label staticLabel = new Label();
         staticLabel.setText("Order placed");
         int numPages = orderManagement.getAllOrders().size();
+        if(numPages==0) return;
         p.setPageCount(numPages);
         p.setCurrentPageIndex(0);
         p.setPageFactory(pageIndex -> {
@@ -49,7 +51,8 @@ public class orderManagementController implements Initializable {
 
             // Create a string representation of items in the cart
             String itemsText="";
-            Map<Product, Integer> cartItems = order.getCart().getItems();
+            System.out.println("cart items content"+order.getItems());
+            Map<Product, Integer> cartItems = order.getItems();
             System.out.println("cartitemssize"+cartItems.size());
             for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
                 itemsText+=(entry.getKey().getName())+(" - #")+(entry.getValue())+("\n");
@@ -64,7 +67,6 @@ public class orderManagementController implements Initializable {
     }
 
 
-
     @FXML
     void switchToHome(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("start.fxml")));
@@ -73,17 +75,19 @@ public class orderManagementController implements Initializable {
         stage.setScene(scene);
     }
 
+
+
     @FXML
-    void switchToPayment(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("payment.fxml")));
+    void switchToCatalog(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("catalog.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
     }
 
     @FXML
-    void switchToCatalog(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("catalog.fxml")));
+    void switchToCart(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("cart.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

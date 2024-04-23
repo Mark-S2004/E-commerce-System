@@ -98,7 +98,7 @@ public class catalogController implements Initializable {
 
     @FXML
     void switchToOrders(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("orders.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("order.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

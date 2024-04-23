@@ -14,7 +14,7 @@ public class ProductCatalog {
         products.add(product);
     }
 
-    public void removeProduct(Product product) {
+    public static void removeProduct(Product product) {
         products.remove(product);
     }
 

@@ -1,13 +1,30 @@
 package EcommerceSystem;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class Order {
     private int orderId;
     //private String userEmail;
+    int total;
     private static int orderNum=0;
-    ShoppingCart cart;
-    public Order(ShoppingCart cart) {
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public void setItems(Map<Product, Integer> items) {
+        for(Map.Entry<Product,Integer> item:items.entrySet()) {
+            this.items.put(item.getKey(),item.getValue());
+        }
+    }
+
+    //final ShoppingCart  cart=new ShoppingCart();
+   private Map<Product, Integer> items = new HashMap<>();
+    public Order() {
       this.orderId=++orderNum;
-        this.cart=cart;
+        //this.cart=cart;
     }
 
     public int getOrderId() {
@@ -26,11 +43,11 @@ public class Order {
         Order.orderNum = orderNum;
     }
 
-    public ShoppingCart getCart() {
-        return cart;
+    public int getTotal() {
+        return total;
     }
 
-    public void setCart(ShoppingCart cart) {
-        this.cart = cart;
+    public Map<Product, Integer> getItems() {
+        return items;
     }
 }

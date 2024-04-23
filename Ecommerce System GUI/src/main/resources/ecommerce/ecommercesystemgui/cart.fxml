@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@../../../../src/main/resources/ecommerce/ecommercesystemgui/Styles/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CartController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@../../../../src/main/resources/ecommerce/ecommercesystemgui/Styles/home.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.CartController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -29,7 +29,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Orders" textAlignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToOrders" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Orders" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -38,7 +38,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
+                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToCart" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

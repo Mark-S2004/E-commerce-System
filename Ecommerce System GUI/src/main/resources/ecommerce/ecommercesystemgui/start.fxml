@@ -3,22 +3,29 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="355.0" prefWidth="450.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.StartController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
 
-    <Label fx:id="welcomeText" text="Welcome to our E-commerce test-driven System" textFill="#6023db" textOverrun="CLIP" />
-    <Button onAction="#toLogin" text="Login">
-      <font>
-         <Font name="Arial Rounded MT Bold" size="16.0" />
-      </font></Button>
-   <Button mnemonicParsing="false" onAction="#toCreateAccount" text="Create Account">
-      <font>
-         <Font name="System Bold" size="15.0" />
-      </font>
-   </Button>
-</VBox>
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ecommerce.ecommercesystemgui.StartController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="355.0" prefWidth="450.0" spacing="20.0">
+          <padding>
+              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+          </padding>
+      
+                <Label fx:id="welcomeText" text="Welcome to our E-commerce test-driven System" textFill="#6023db" textOverrun="CLIP" />
+          <Button onAction="#toLogin" text="Login">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#toCreateAccount" text="Create Account">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Button>
+      </VBox>
+   </children>
+</AnchorPane>
