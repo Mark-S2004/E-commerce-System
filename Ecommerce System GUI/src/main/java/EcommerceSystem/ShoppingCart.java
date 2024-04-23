@@ -19,8 +19,10 @@ public class ShoppingCart {
     }
 
     public void removeItem(Product item) {
-        total -= item.getPrice();
-        items.remove(item);
+        if (items.containsKey(item)) {
+            total -= item.getPrice() * items.get(item);
+            items.remove(item);
+        }
     }
 
     public Map<Product, Integer> getItems() {
