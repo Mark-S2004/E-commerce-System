@@ -3,11 +3,16 @@ package EcommerceSystem;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShoppingCart {
+public class ShoppingCart implements Cloneable{
     private final Map<Product, Integer> items = new HashMap<>();
     private double total;
 
     public ShoppingCart() {}
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public double getTotal() {
         return total;
