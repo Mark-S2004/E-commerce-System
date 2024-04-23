@@ -26,12 +26,10 @@ public class AccountManager {
         }
     }
 
-    public static void displayAccounts() {
-        System.out.println("Accounts:");
-        for (Account account : accounts) {
-            System.out.println("Username: " + account.getUsername() + ", Password: " + account.getPassword());
-        }
+    protected static List<Account> getAccounts() {
+        return accounts;
     }
+
     public static boolean authenticate(String username, String password) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
