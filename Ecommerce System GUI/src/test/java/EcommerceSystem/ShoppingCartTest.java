@@ -35,14 +35,16 @@ public class ShoppingCartTest {
     @RepeatedTest(3)
     @Order(2)
     public void addSameItem() {
-        staticCart.addItem(item1, 5);
+        Random random = new Random();
+        int quantity = random.nextInt(1000);
+        staticCart.addItem(item1, quantity);
         Map<Product, Integer> items = staticCart.getItems();
 
         assertEquals(1, items.size());
         assertTrue(items.containsKey(item1));
-        assertTrue(items.containsValue(5));
-        assertFalse(items.containsValue(new Random().nextInt(1000) + 6));
-        assertEquals(item1.getPrice() * 5, staticCart.getTotal());
+        assertTrue(items.containsValue(quantity));
+        assertFalse(items.containsValue(random.nextInt(1000)));
+        assertEquals(item1.getPrice() * quantity, staticCart.getTotal());
     }
 
     static Stream<Arguments> addDifferentItems() {
