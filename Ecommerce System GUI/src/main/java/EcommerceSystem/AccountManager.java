@@ -1,10 +1,10 @@
 package EcommerceSystem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class AccountManager {
-    private static List<Account> accounts = new ArrayList<>();
+    private static final HashSet<Account> accounts = new HashSet<>();
+    private static final HashSet<String> usernames = new HashSet<>();
     private static Account loggedInUser;
 
     public AccountManager() {}
@@ -13,7 +13,12 @@ public class AccountManager {
         return loggedInUser;
     }
 
-    public static void createAccount(String username, String password, String type) {
+    public static void createAccount(String username, String password, String type) throws Exception {
+        if (usernames.contains(username)) {
+            throw new Exception("This username has been already used");
+        } else {
+            usernames.add(username);
+        }
         if(type.equalsIgnoreCase("manager")) {
             ManagerAccount newAccount = new ManagerAccount(username, password);
             loggedInUser = newAccount;
@@ -26,7 +31,7 @@ public class AccountManager {
         }
     }
 
-    protected static List<Account> getAccounts() {
+    protected static HashSet<Account> getAccounts() {
         return accounts;
     }
 
