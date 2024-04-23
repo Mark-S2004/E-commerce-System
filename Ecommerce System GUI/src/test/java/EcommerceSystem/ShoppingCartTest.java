@@ -77,10 +77,13 @@ public class ShoppingCartTest {
     public void removeItem(Product removeItem, int quantity, Product remainItem, int quantityRemain) {
         shoppingCart.addItem(removeItem, quantity);
         shoppingCart.addItem(remainItem, quantityRemain);
+        double total = shoppingCart.getTotal();
+        shoppingCart.removeItem(removeItem);
         shoppingCart.removeItem(removeItem);
         Map<Product, Integer> items = shoppingCart.getItems();
 
         assertEquals(1, items.size(), "Only one item should be in the cart");
+        assertEquals(total - removeItem.getPrice() * quantity, shoppingCart.getTotal());
         assertFalse(items.containsKey(removeItem));
         assertFalse(items.containsValue(quantity));
         assertTrue(items.containsKey(remainItem));
