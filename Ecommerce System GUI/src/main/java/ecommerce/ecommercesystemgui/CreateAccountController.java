@@ -14,8 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javax.swing.*;
-
 public class CreateAccountController {
     private Stage stage;
     private Scene scene;
