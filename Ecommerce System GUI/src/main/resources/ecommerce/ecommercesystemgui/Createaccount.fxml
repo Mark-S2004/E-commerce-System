@@ -36,6 +36,12 @@
                   <Insets bottom="8.0" top="8.0" />
                </padding>
             </VBox>
+            <Label fx:id="errorLabel1" layoutX="243.0" layoutY="54.0" text="Try another username" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLabel2" layoutX="243.0" layoutY="71.0" text="This username has been used before!" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
    </center>

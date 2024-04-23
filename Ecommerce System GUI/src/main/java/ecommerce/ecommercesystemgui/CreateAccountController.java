@@ -2,7 +2,7 @@ package ecommerce.ecommercesystemgui;
 
 import EcommerceSystem.AccountManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -22,6 +22,8 @@ public class CreateAccountController {
     private TextField usernameField, passwordField;
     @FXML
     private RadioButton customerRadio, managerRadio;
+    @FXML
+    private Label errorLabel1, errorLabel2;
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {
@@ -31,7 +33,14 @@ public class CreateAccountController {
 
         if (customerRadio.isSelected()) userType = "customer";
         else userType = "manager";
-        AccountManager.createAccount(username, password, userType);
+        try {
+            AccountManager.createAccount(username, password, userType);
+        } catch (Exception e) {
+            errorLabel1.setVisible(true);
+            errorLabel2.setVisible(true);
+            usernameField.clear();
+            return;
+        }
 
         FXMLLoader loader;
         if (userType.equalsIgnoreCase("manager")) {
