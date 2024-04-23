@@ -15,13 +15,12 @@ import java.util.stream.Stream;
 public class ShoppingCartTest {
     private ShoppingCart shoppingCart;
     private static final ShoppingCart staticCart = new ShoppingCart();
-    private static Product item1, item2;
+    private final static Product item1 = new Product("P001", "iPhone", 999.99);
+    private final static Product item2 = new Product("P002", "Pepsi", 9.99);
 
     @BeforeEach
     public void setUp() {
         shoppingCart = new ShoppingCart();
-        item1 = new Product("P001", "iPhone", 999.99);
-        item2 = new Product("P002", "Pepsi", 9.99);
     }
 
     @Test
