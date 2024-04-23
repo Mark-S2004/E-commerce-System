@@ -66,16 +66,16 @@ public class ShoppingCartTest {
 
     static Stream<Arguments> removeItem() {
         return Stream.of(
-                Arguments.arguments(item1, 5, item2),
-                Arguments.arguments(item2, 2, item1)
+                Arguments.arguments(item1, 5, item2, 2),
+                Arguments.arguments(item2, 2, item1, 5)
         );
     }
     @ParameterizedTest
     @MethodSource
     @Order(4)
-    public void removeItem(Product removeItem, int quantity, Product remainItem) {
-        shoppingCart.addItem(item1, 5);
-        shoppingCart.addItem(item2, 2);
+    public void removeItem(Product removeItem, int quantity, Product remainItem, int quantityRemain) {
+        shoppingCart.addItem(removeItem, quantity);
+        shoppingCart.addItem(remainItem, quantityRemain);
         shoppingCart.removeItem(removeItem);
         Map<Product, Integer> items = shoppingCart.getItems();
 
@@ -83,6 +83,7 @@ public class ShoppingCartTest {
         assertFalse(items.containsKey(removeItem));
         assertFalse(items.containsValue(quantity));
         assertTrue(items.containsKey(remainItem));
+        assertTrue(items.containsValue(quantityRemain));
     }
 
 
