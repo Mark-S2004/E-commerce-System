@@ -13,9 +13,9 @@ public class AccountManager {
         return loggedInUser;
     }
 
-    public static void createAccount(String username, String password, String type) throws Exception {
+    public static void createAccount(String username, String password, String type) throws CreateAccountException {
         if (usernames.contains(username)) {
-            throw new Exception("This username has been already used");
+            throw new CreateAccountException();
         } else {
             usernames.add(username);
         }

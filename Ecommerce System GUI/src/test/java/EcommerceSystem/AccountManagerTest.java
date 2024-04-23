@@ -31,7 +31,7 @@ class AccountManagerTest {
     @RepeatedTest(3)
     @Order(1)
     @DisplayName("Create random customer accounts test")
-    void createCustomerAccount() throws Exception {
+    void createCustomerAccount() throws CreateAccountException {
         assumeFalse(testUsernames.contains(randomUsername));
 
         HashSet<Account> accounts = AccountManager.getAccounts();
@@ -49,7 +49,7 @@ class AccountManagerTest {
     @RepeatedTest(3)
     @Order(1)
     @DisplayName("Create random manager accounts test")
-    void createManagerAccount() throws Exception {
+    void createManagerAccount() throws CreateAccountException {
         assumeFalse(testUsernames.contains(randomUsername));
 
         HashSet<Account> accounts = AccountManager.getAccounts();
@@ -67,11 +67,11 @@ class AccountManagerTest {
     @Test
     @Order(1)
     @DisplayName("Create two accounts with the same username")
-    void repeatedUsername() throws Exception {
+    void repeatedUsername() throws CreateAccountException {
         assumeFalse(testUsernames.contains(randomUsername));
         AccountManager.createAccount(randomUsername, randomPassword, "customer");
         testAccounts.add(new Pair<>(randomUsername, randomPassword));
-        assertThrows(Exception.class, () -> AccountManager.createAccount(randomUsername, "password", "customer"));
+        assertThrows(CreateAccountException.class, () -> AccountManager.createAccount(randomUsername, "password", "customer"));
     }
 
     @Test

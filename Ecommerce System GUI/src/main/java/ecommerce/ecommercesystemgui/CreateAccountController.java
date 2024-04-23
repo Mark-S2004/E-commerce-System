@@ -1,6 +1,7 @@
 package ecommerce.ecommercesystemgui;
 
 import EcommerceSystem.AccountManager;
+import EcommerceSystem.CreateAccountException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -35,7 +36,7 @@ public class CreateAccountController {
         else userType = "manager";
         try {
             AccountManager.createAccount(username, password, userType);
-        } catch (Exception e) {
+        } catch (CreateAccountException e) {
             errorLabel1.setVisible(true);
             errorLabel2.setVisible(true);
             usernameField.clear();
