@@ -17,6 +17,9 @@ public class ShoppingCart {
         if (!items.containsKey(item)) {
             total += item.getPrice() * quantity;
             items.put(item, quantity);
+        } else {
+            total += item.getPrice() * (quantity - items.get(item));
+            items.put(item,quantity);
         }
     }
 
