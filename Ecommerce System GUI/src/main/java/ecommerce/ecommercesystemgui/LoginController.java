@@ -1,6 +1,7 @@
 package ecommerce.ecommercesystemgui;
 
 import EcommerceSystem.Account;
+import EcommerceSystem.AccountManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -28,9 +29,9 @@ public class LoginController {
         String password = passwordField.getText();
         Account u = new Account(username, password);
 
-        if (u.login(username, password)) {
+        if (AccountManager.authenticate(username, password)) {
             FXMLLoader loader;
-            if (u.isManager()) {
+            if (AccountManager.isManager(u.getUsername())) {
                  loader = new FXMLLoader(getClass().getResource("addProducts.fxml"));
             } else {
                 loader = new FXMLLoader(getClass().getResource("catalog.fxml"));
