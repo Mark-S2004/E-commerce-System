@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCatalog {
-    private static List<Product> products=new ArrayList<>();
-
-    public ProductCatalog() {}
+    private static final List<Product> products=new ArrayList<>();
 
     public static void addProduct(Product product) {
         products.add(product);
@@ -20,7 +18,7 @@ public class ProductCatalog {
         return products;
     }
 
-    public List<Product> searchProducts(String keyword) {
+    public static List<Product> searchProducts(String keyword) {
         List<Product> searchResults = new ArrayList<>();
         for (Product product : products) {
             if (product.getId().toLowerCase().contains(keyword.toLowerCase())) {
