@@ -7,8 +7,6 @@ public class AccountManager {
     private static final HashSet<String> usernames = new HashSet<>();
     private static Account loggedInUser;
 
-    public AccountManager() {}
-
     public static Account getLoggedInUser() {
         return loggedInUser;
     }
