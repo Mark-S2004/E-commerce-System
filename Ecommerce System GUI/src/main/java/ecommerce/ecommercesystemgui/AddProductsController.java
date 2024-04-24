@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class AddProductsController implements Initializable {
@@ -69,6 +70,26 @@ public class AddProductsController implements Initializable {
         }
     }
 
+    @FXML
+    void removeItem() {
+        Product selectedProduct = catalogList.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            ProductCatalog.removeProduct(selectedProduct);
+            catalogList.getItems().remove(selectedProduct);
+           // totalLabel.setText(((Double) shoppingCart.getTotal()).toString());
+        }
+        catalogList.cellFactoryProperty().set(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(Product cartItem, boolean empty) {
+                super.updateItem(cartItem, empty);
+                if (empty || cartItem == null) {
+                    setText(null);
+                } else {
+                    setText(cartItem.getName() + "- $" + cartItem.getPrice());
+                }
+            }
+        });
+    }
     @FXML
     public void finish(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));

@@ -8,14 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -29,6 +27,9 @@ public class catalogController implements Initializable {
     private Label quantityLabel;
     @FXML
     private Button decrementButton;
+    @FXML
+    private TextField searchField;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,6 +55,15 @@ public class catalogController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    @FXML
+    void searchProduct(ActionEvent event) {
+        String keyword = searchField.getText();
+        List<Product> searchResults = ProductCatalog.searchProducts(keyword);
+        catalogList.getItems().setAll(searchResults);
+        quantityLabel.setText("1");
+        decrementButton.setDisable(true);
     }
 
     @FXML
@@ -84,5 +94,14 @@ public class catalogController implements Initializable {
         if (selectedProduct != null) {
             shoppingCart.addItem(selectedProduct, Integer.parseInt(quantityLabel.getText()));
         }
+    }
+
+    @FXML
+    void switchToOrders(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("order.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

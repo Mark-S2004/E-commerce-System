@@ -75,6 +75,23 @@ public class CartController implements Initializable {
     }
 
     @FXML
+    void switchToOrders(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("order.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchToCart(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("cart.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    @FXML
     void removeItem() {
         Map.Entry<Product, Integer> selectedProduct = cartList.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
