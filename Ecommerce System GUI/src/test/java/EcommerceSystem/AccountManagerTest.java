@@ -2,19 +2,21 @@ package EcommerceSystem;
 
 import javafx.util.Pair;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Random;
+import java.util.stream.Stream;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AccountManagerTest {
     private String randomUsername, randomPassword;
-    private final HashSet<Pair<String, String>> testAccounts = new HashSet<>();
+    private static final HashSet<Pair<String, String>> testAccounts = new HashSet<>();
     private final HashSet<String> testUsernames = new HashSet<>();
     private static Account account, managerAccount;
 
@@ -74,32 +76,30 @@ class AccountManagerTest {
         assertThrows(CreateAccountException.class, () -> AccountManager.createAccount(randomUsername, "password", "customer"));
     }
 
-    @Test
+    static Stream<Pair<String, String>> validAuthentication() {
+        return testAccounts.stream();
+    }
+    @ParameterizedTest
+    @MethodSource
     @Order(2)
     @DisplayName("Test valid authentication")
-    void validAuthentication() {
-        Iterator<Pair<String, String>> accountsIterator = testAccounts.iterator();
-        Pair<String, String> account;
-        while (accountsIterator.hasNext()) {
-            account = accountsIterator.next();
-            assertTrue(AccountManager.authenticate(account.getKey(), account.getValue()));
-            assertEquals(account.getKey(), AccountManager.getLoggedInUser().getUsername());
-            assertEquals(account.getValue(), AccountManager.getLoggedInUser().getPassword());
-        }
+    void validAuthentication(Pair<String, String> account) {
+        assertTrue(AccountManager.authenticate(account.getKey(), account.getValue()));
+        assertEquals(account.getKey(), AccountManager.getLoggedInUser().getUsername());
+        assertEquals(account.getValue(), AccountManager.getLoggedInUser().getPassword());
     }
 
-    @Test
+    static Stream<Pair<String, String>> invalidAuthentication() {
+        return testAccounts.stream();
+    }
+    @ParameterizedTest
+    @MethodSource
     @Order(2)
     @DisplayName("Test invalid authentication")
-    void invalidAuthentication() {
-        Iterator<Pair<String, String>> accountsIterator = testAccounts.iterator();
-        Pair<String, String> account;
-        while (accountsIterator.hasNext()) {
-            account = accountsIterator.next();
-            assertFalse(AccountManager.authenticate(randomUsername, randomPassword));
-            assertFalse(AccountManager.authenticate(randomUsername, account.getValue()));
-            assertFalse(AccountManager.authenticate(account.getKey(), randomPassword));
-        }
+    void invalidAuthentication(Pair<String, String> account) {
+        assertFalse(AccountManager.authenticate(randomUsername, randomPassword));
+        assertFalse(AccountManager.authenticate(randomUsername, account.getValue()));
+        assertFalse(AccountManager.authenticate(account.getKey(), randomPassword));
     }
 
     @Test
