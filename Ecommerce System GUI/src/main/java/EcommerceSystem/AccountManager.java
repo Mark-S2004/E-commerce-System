@@ -1,19 +1,22 @@
 package EcommerceSystem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class AccountManager {
-    private static List<Account> accounts = new ArrayList<>();
+    private static final HashSet<Account> accounts = new HashSet<>();
+    private static final HashSet<String> usernames = new HashSet<>();
     private static Account loggedInUser;
-
-    public AccountManager() {}
 
     public static Account getLoggedInUser() {
         return loggedInUser;
     }
 
-    public static void createAccount(String username, String password, String type) {
+    public static void createAccount(String username, String password, String type) throws CreateAccountException {
+        if (usernames.contains(username)) {
+            throw new CreateAccountException();
+        } else {
+            usernames.add(username);
+        }
         if(type.equalsIgnoreCase("manager")) {
             ManagerAccount newAccount = new ManagerAccount(username, password);
             loggedInUser = newAccount;
@@ -26,12 +29,10 @@ public class AccountManager {
         }
     }
 
-    public static void displayAccounts() {
-        System.out.println("Accounts:");
-        for (Account account : accounts) {
-            System.out.println("Username: " + account.getUsername() + ", Password: " + account.getPassword());
-        }
+    protected static HashSet<Account> getAccounts() {
+        return accounts;
     }
+
     public static boolean authenticate(String username, String password) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username) && account.getPassword().equals(password)) {

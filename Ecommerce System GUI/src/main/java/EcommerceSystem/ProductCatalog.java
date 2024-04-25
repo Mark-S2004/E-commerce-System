@@ -4,11 +4,7 @@ package EcommerceSystem;
         import java.util.List;
 
 public class ProductCatalog {
-    private static List<Product> products=new ArrayList<>();
-
-    public ProductCatalog() {
-
-    }
+    private static final List<Product> products=new ArrayList<>();
 
     public static void addProduct(Product product) {
         products.add(product);
@@ -22,15 +18,6 @@ public class ProductCatalog {
         return products;
     }
 
-   /* public List<Product> searchProducts(String keyword) {
-        List<Product> searchResults = new ArrayList<>();
-        for (Product product : products) {
-            if (product.getId().toLowerCase().contains(keyword.toLowerCase())) {
-                searchResults.add(product);
-            }
-        }
-        return searchResults;
-    }*/
    public static int calculateLevenshteinDistance(String word1, String word2) {
        int[][] dp = new int[word1.length() + 1][word2.length() + 1];
 

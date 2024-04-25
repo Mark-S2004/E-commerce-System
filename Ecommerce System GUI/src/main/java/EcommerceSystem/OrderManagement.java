@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderManagement {
-    private final List<Order> orders=new ArrayList<Order>();
+    private final List<placedOrder> orders=new ArrayList<>();
 
     public OrderManagement() {
 
     }
 
-    public void placeOrder(Order order) {
+    public void placeOrder(placedOrder order) {
         orders.add(order);
         System.out.println("order added");
     }
 
-    public void cancelOrder(Order order) {
+    public void cancelOrder(placedOrder order) {
         orders.remove(order);
     }
 
-    public List<Order> getAllOrders() {
+    public List<placedOrder> getAllOrders() {
         return orders;
     }
 }

@@ -7,6 +7,10 @@ public class PaymentProcessor {
         paymentGatewayConnected = true;
     }
 
+    public boolean isPaymentGatewayConnected() {
+        return paymentGatewayConnected;
+    }
+
     public boolean processPayment(double amount) {
         if (paymentGatewayConnected) {
             // Simulating payment processing logic
