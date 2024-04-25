@@ -22,7 +22,7 @@ public class AccountManager {
             loggedInUser = newAccount;
             accounts.add(newAccount);
         }
-        else if(type.equalsIgnoreCase("customer")) {
+        else {
             CustomerAccount newAccount = new CustomerAccount(username, password);
             loggedInUser = newAccount;
             accounts.add(newAccount);
