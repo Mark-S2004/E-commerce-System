@@ -11,7 +11,7 @@ import org.junit.platform.suite.api.SuiteDisplayName;
         ProductCatalogTest.class,
         ShoppingCartTest.class,
         PaymentProcessorTest.class,
-        OrderTest.class,
+        PlacedOrderTest.class,
         OrderManagementTest.class,
         AccountTest.class,
         AccountManagerTest.class

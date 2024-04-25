@@ -44,15 +44,15 @@ public class orderManagementController implements Initializable {
         p.setPageFactory(pageIndex -> {
             // Create and return the content for each page
             VBox pageContent = new VBox();
-            List<Order> orders = orderManagement.getAllOrders();
+            List<placedOrder> orders = orderManagement.getAllOrders();
             System.out.println("order size"+orders.size());
-            Order order = orders.get(pageIndex); // Get the order for the current page
-            Label orderLabel = new Label("Order ID: " + order.getOrderId() + " Items:");
+            placedOrder placedOrder = orders.get(pageIndex); // Get the order for the current page
+            Label orderLabel = new Label("Order ID: " + placedOrder.getOrderId() + " Items:");
 
             // Create a string representation of items in the cart
             String itemsText="";
-            System.out.println("cart items content"+order.getItems());
-            Map<Product, Integer> cartItems = order.getItems();
+            System.out.println("cart items content"+ placedOrder.getItems());
+            Map<Product, Integer> cartItems = placedOrder.getItems();
             System.out.println("cartitemssize"+cartItems.size());
             for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
                 itemsText+=(entry.getKey().getName())+(" - #")+(entry.getValue())+("\n");

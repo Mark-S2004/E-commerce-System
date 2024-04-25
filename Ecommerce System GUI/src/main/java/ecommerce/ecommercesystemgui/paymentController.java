@@ -43,9 +43,9 @@ public class paymentController implements Initializable {
         //   shoppingCart.clear();
         if (p.processPayment(Double.parseDouble(enteredAmount)) && Double.parseDouble(enteredAmount) >= Double.parseDouble(totalLabel.getText())) {
             orderManagement = ((CustomerAccount) AccountManager.getLoggedInUser()).orderManagement;
-            Order order=new Order();
-            order.setItems(shoppingCart.getItems());
-            orderManagement.placeOrder(order);
+            placedOrder placedOrder =new placedOrder();
+            placedOrder.setItems(shoppingCart.getItems());
+            orderManagement.placeOrder(placedOrder);
             shoppingCart.clear();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lastwindow.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
