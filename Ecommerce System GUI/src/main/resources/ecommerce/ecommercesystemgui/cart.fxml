@@ -29,7 +29,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Orders" textAlignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToOrders" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Orders" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -38,7 +38,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
+                        <Button id="selectedMenuItem" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToCart" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" styleClass="menuItem" text="Cart" textAlignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
