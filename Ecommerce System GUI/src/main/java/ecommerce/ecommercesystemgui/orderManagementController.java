@@ -23,7 +23,6 @@ public class orderManagementController implements Initializable {
     private Scene scene;
     private Parent root;
     OrderManagement orderManagement;
-    ShoppingCart shoppingCart;
 
    /* @FXML
     private ListView<Map.Entry<Product, Integer>> cartList;*/
@@ -50,15 +49,15 @@ public class orderManagementController implements Initializable {
             Label orderLabel = new Label("Order ID: " + placedOrder.getOrderId() + " Items:");
 
             // Create a string representation of items in the cart
-            String itemsText="";
+            StringBuilder itemsText= new StringBuilder();
             System.out.println("cart items content"+ placedOrder.getItems());
             Map<Product, Integer> cartItems = placedOrder.getItems();
             System.out.println("cartitemssize"+cartItems.size());
             for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
-                itemsText+=(entry.getKey().getName())+(" - #")+(entry.getValue())+("\n");
+                itemsText.append(entry.getKey().getName()).append(" - #").append(entry.getValue()).append("\n");
             }
 
-            Label itemsLabel = new Label(itemsText);
+            Label itemsLabel = new Label(itemsText.toString());
 
             // Customize order label with additional information if needed
             pageContent.getChildren().addAll(orderLabel, itemsLabel, staticLabel);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderManagement {
-    private final List<placedOrder> orders=new ArrayList<placedOrder>();
+    private final List<placedOrder> orders=new ArrayList<>();
 
     public OrderManagement() {
 
