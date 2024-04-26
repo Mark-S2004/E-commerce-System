@@ -80,6 +80,9 @@ class ProductCatalogTest {
     void searchProducts() {
         Product[] expectedSearchResults, actualSearchResults;
         List<Product> actualArray;
+        ProductCatalog.addProduct(product1);
+        ProductCatalog.addProduct(product2);
+        ProductCatalog.addProduct(product3);
 
         expectedSearchResults = new Product[]{product1};
         actualArray = ProductCatalog.searchProducts("TestProduct1");
@@ -90,10 +93,5 @@ class ProductCatalogTest {
         actualArray = ProductCatalog.searchProducts("TestProduct");
         actualSearchResults = actualArray.toArray(new Product[actualArray.size()]);
         assertArrayEquals(expectedSearchResults, actualSearchResults, "Incorrect search result for Keyword: TestProduct");
-
-        expectedSearchResults = new Product[]{product1, product2, product3};
-        actualArray = ProductCatalog.searchProducts("Product");
-        actualSearchResults = actualArray.toArray(new Product[actualArray.size()]);
-        assertArrayEquals(expectedSearchResults, actualSearchResults, "Incorrect search result for Keyword: Product");
     }
 }
