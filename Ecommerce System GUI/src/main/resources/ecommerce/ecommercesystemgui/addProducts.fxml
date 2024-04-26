@@ -25,5 +25,6 @@
       <ListView fx:id="catalogList" layoutX="386.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" />
       <Label fx:id="errorLabel" layoutX="101.0" layoutY="263.0" prefHeight="25.0" prefWidth="285.0" text="Invalid price format. Please enter a valid double value." textFill="RED" visible="false" />
       <Button layoutX="447.0" layoutY="294.0" mnemonicParsing="false" onAction="#removeItem" text="remove product" />
+      <Label fx:id="errorLabel2" layoutX="402.0" layoutY="341.0" text="you already added this product!" visible="false" />
    </children>
 </AnchorPane>

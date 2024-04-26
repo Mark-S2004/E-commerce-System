@@ -7,11 +7,24 @@ public class ProductCatalog {
     private static final List<Product> products=new ArrayList<>();
 
     public static void addProduct(Product product) {
-        products.add(product);
+        boolean duplicate=false;
+        for(Product productloop:ProductCatalog.getAllProducts()) {
+            if (product.getName().equals(productloop.getName())) {
+                duplicate = true;
+                break;
+            }
+        }
+        if(duplicate){
+            System.out.println("you already added this product!");
+        }
+        else {
+            products.add(product);
+        }
     }
 
     public static void removeProduct(Product product) {
         products.remove(product);
+
     }
 
     public static List<Product> getAllProducts() {
