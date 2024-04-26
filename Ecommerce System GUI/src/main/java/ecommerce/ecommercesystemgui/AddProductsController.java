@@ -48,6 +48,7 @@ public class AddProductsController implements Initializable {
         String name = nameField.getText();
         String priceText = priceField.getText();
         String id = idField.getText();
+        duplicate=false;
         for(Product productloop:ProductCatalog.getAllProducts()) {
             if (name.equals(productloop.getName())) {
                 duplicate = true;

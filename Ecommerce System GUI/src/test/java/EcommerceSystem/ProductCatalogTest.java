@@ -31,7 +31,7 @@ class ProductCatalogTest {
     }
 
     @RepeatedTest(3)
-    @Order(2)
+    @Order(3)
     public void addSameItem() {
         ProductCatalog.addProduct(product3);
         List<Product> products = ProductCatalog.getAllProducts();
@@ -45,7 +45,7 @@ class ProductCatalogTest {
     }
     @ParameterizedTest
     @MethodSource
-    @Order(3)
+    @Order(4)
     @DisplayName("Remove different products")
     void removeProduct(Product product) {
         ProductCatalog.removeProduct(product);
@@ -55,13 +55,13 @@ class ProductCatalogTest {
     }
 
     @RepeatedTest(3)
-    @Order(3)
+    @Order(5)
     public void removeSameItem() {
         ProductCatalog.removeProduct(product3);
         List<Product> products = ProductCatalog.getAllProducts();
 
         assertEquals(count - 1, products.size());
-        assertTrue(products.contains(product3));
+        assertFalse(products.contains(product3));
     }
 
     @Test
@@ -75,7 +75,7 @@ class ProductCatalogTest {
     }
 
     @Test
-    @Order(4)
+    @Order(6)
     @DisplayName("Search products in ProductCatalog")
     void searchProducts() {
         Product[] expectedSearchResults, actualSearchResults;
